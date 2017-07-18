@@ -120,7 +120,7 @@ body, .app {
 }
 
 .book {
-  width: 140px;
+  width: 158px;
 }
 .book-title,
 .book-authors {
@@ -135,7 +135,7 @@ body, .app {
 
 .book-top {
   position: relative;
-  height: 200px;
+  height: 186px;
   display: flex;
   align-items: flex-end;
 }

@@ -19,8 +19,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <h1>My Bookshelf</h1>
-        <ListBooks books={this.state.books} />
+        <div className="list-books-title">
+          <h1>My Bookshelf</h1>
+        </div>
+        <ListBooks books={this.state.books} shelf={'currentlyReading'} />
+        <ListBooks books={this.state.books} shelf={'wantToRead'} />
+        <ListBooks books={this.state.books} shelf={'read'} />
       </div>
     );
   }
