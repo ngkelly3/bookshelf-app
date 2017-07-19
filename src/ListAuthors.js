@@ -8,7 +8,6 @@ const ListAuthors = ({book}) => {
           ))}
         </div>
     )
-
 }
 
 export default ListAuthors

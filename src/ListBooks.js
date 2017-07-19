@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ListAuthors from './ListAuthors'
 import PropTypes from 'prop-types'
+import * as BooksAPI from './BooksAPI'
 
 class ListBooks extends Component {
   static propTypes = {
@@ -9,7 +10,7 @@ class ListBooks extends Component {
 
   state = {
     shelf: '',
-    query: ''
+    bookShelf: []
   }
 
   componentDidMount() {
@@ -20,6 +21,18 @@ class ListBooks extends Component {
     if (this.props.shelf === 'read')
       this.setState({shelf: 'Read'})
   }
+
+  handleShelfChange(event, book) {
+    let value = event.target.value;
+    // change
+    BooksAPI.update(book, value).then(
+      this.props.updateBooks()
+    );
+    console.log(value);
+    // console.log(this.state.books);
+
+  }
+
 
   render() {
     // props destructuring
@@ -33,8 +46,7 @@ class ListBooks extends Component {
     if (books) {
       thisBookShelf = books.filter((book) => book.shelf === this.props.shelf);
     }
-
-    console.log(thisBookShelf);
+    // console.log(thisBookShelf);
 
     return(
       <div className='bookshelf'>
@@ -47,10 +59,11 @@ class ListBooks extends Component {
                   <div className='book-top'>
                     <div className='book-cover' style={{
                       backgroundImage: `url(${book.imageLinks.thumbnail})`,
-                      width: 138
+                      width: 128,
+                      height: 192
                     }}/>
                     <div className='book-shelf-changer'>
-                      <select>
+                      <select value={book.shelf} onChange={(e) => this.handleShelfChange(e, book)}>
                         <option value='none' disabled>Move to...</option>
                         <option value='currentlyReading'>Currently Reading</option>
                         <option value='wantToRead'>Want to Read</option>
