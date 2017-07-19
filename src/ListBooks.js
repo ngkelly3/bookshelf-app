@@ -34,7 +34,7 @@ class ListBooks extends Component {
       thisBookShelf = books.filter((book) => book.shelf === this.props.shelf);
     }
 
-    // console.log(thisBookShelf);
+    console.log(thisBookShelf);
 
     return(
       <div className='bookshelf'>
@@ -46,14 +46,26 @@ class ListBooks extends Component {
                 <div className='book'>
                   <div className='book-top'>
                     <div className='book-cover' style={{
-                      backgroundImage: `url(${book.imageLinks.thumbnail})`
+                      backgroundImage: `url(${book.imageLinks.thumbnail})`,
+                      width: 138
                     }}/>
+                    <div className='book-shelf-changer'>
+                      <select>
+                        <option value='none' disabled>Move to...</option>
+                        <option value='currentlyReading'>Currently Reading</option>
+                        <option value='wantToRead'>Want to Read</option>
+                        <option value='read'>Read</option>
+                        <option value='none'>None</option>
+                      </select>
+                    </div>
                   </div>
                   <div className='book-title'>
                     <h5>{book.title}</h5>
                   </div>
                   <div className='book-authors'>
-                    <ListAuthors book={book}/>
+                    {book.authors.map((author) => (
+                      <div className='book-authors' key={author.toString()}>{author}</div>
+                    ))}
                   </div>
                 </div>
               </li>
