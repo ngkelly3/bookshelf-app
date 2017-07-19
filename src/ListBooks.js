@@ -31,29 +31,35 @@ class ListBooks extends Component {
 
     // filter out those books which belong to the proper bookshelf
     if (books) {
-      thisBookShelf = books.filter((book) => book.shelf == this.props.shelf);
+      thisBookShelf = books.filter((book) => book.shelf === this.props.shelf);
     }
 
     // console.log(thisBookShelf);
 
     return(
-      <div className='list-books-content bookshelf'>
+      <div className='bookshelf'>
         <h2 className='bookshelf-title'>{shelf}</h2>
-        <ol className='books-grid'>
-          {thisBookShelf.map((book) => (
-            <li key={book.id} className='book'>
-              <div className='book-top book-cover' style={{
-                backgroundImage: `url(${book.imageLinks.thumbnail})`
-              }}/>
-              <div className='book-title'>
-                <h5>{book.title}</h5>
-              </div>
-              <div className='book-authors'>
-                <ListAuthors book={book}/>
-              </div>
-            </li>
-          ))}
-        </ol>
+        <div className='bookshelf-books'>
+          <ol className='books-grid'>
+            {thisBookShelf.map((book) => (
+              <li key={book.id}>
+                <div className='book'>
+                  <div className='book-top'>
+                    <div className='book-cover' style={{
+                      backgroundImage: `url(${book.imageLinks.thumbnail})`
+                    }}/>
+                  </div>
+                  <div className='book-title'>
+                    <h5>{book.title}</h5>
+                  </div>
+                  <div className='book-authors'>
+                    <ListAuthors book={book}/>
+                  </div>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
 
     )

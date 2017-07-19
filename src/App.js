@@ -22,9 +22,11 @@ class App extends Component {
         <div className="list-books-title">
           <h1>My Bookshelf</h1>
         </div>
-        <ListBooks books={this.state.books} shelf={'currentlyReading'} />
-        <ListBooks books={this.state.books} shelf={'wantToRead'} />
-        <ListBooks books={this.state.books} shelf={'read'} />
+        <div className='list-books-content'>
+          <ListBooks books={this.state.books} shelf={'currentlyReading'} />
+          <ListBooks books={this.state.books} shelf={'wantToRead'} />
+          <ListBooks books={this.state.books} shelf={'read'} />
+        </div>
       </div>
     );
   }
