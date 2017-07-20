@@ -16,12 +16,6 @@ class App extends Component {
   }
 
   updateBooks = () => {
-    // BooksAPI.getAll().then((books) => {
-    //   this.setState({ books })
-    // });
-    BooksAPI.getAll().then((books) => {
-      this.setState({ books })
-    });
     // console.log("books should be reset")
     // console.log(this.state.books)
 

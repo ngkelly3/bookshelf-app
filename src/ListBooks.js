@@ -22,7 +22,7 @@ class ListBooks extends Component {
       this.setState({shelf: 'Read'})
   }
 
-  handleShelfChange(event, book) {
+  handleShelfChange = (event, book) => {
     let value = event.target.value;
     // change
     BooksAPI.update(book, value).then(
