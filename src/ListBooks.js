@@ -23,12 +23,12 @@ class ListBooks extends Component {
   }
 
   handleShelfChange = (event, book) => {
-    let value = event.target.value;
+    let shelf = event.target.value;
     // change
-    BooksAPI.update(book, value).then(
-      this.props.updateBooks()
+    BooksAPI.update(book, shelf).then(
+      this.props.updateBooks(book, shelf)
     );
-    console.log(value);
+    console.log(shelf);
     // console.log(this.state.books);
 
   }

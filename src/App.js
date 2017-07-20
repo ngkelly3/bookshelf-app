@@ -15,10 +15,20 @@ class App extends Component {
     });
   }
 
-  updateBooks = () => {
-    // console.log("books should be reset")
-    // console.log(this.state.books)
+  updateBooks = (book, shelf) => {
 
+    // store the current state in this var,
+    let tempBooks = this.state.books;
+    let index = tempBooks.findIndex((bookItem) => bookItem.id == book.id );
+    //console.log("This is what we found")
+
+    tempBooks[index].shelf = shelf;
+    console.log(shelf);
+    console.log(this.state.books[index]);
+
+    this.setState( {
+      books: tempBooks
+    })
   }
 
   render() {
