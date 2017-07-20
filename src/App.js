@@ -17,18 +17,17 @@ class App extends Component {
 
   updateBooks = (book, shelf) => {
 
-    // store the current state in this var,
+    // store the current state in a temp variable
     let tempBooks = this.state.books;
     let index = tempBooks.findIndex((bookItem) => bookItem.id == book.id );
-    //console.log("This is what we found")
 
-    tempBooks[index].shelf = shelf;
-    console.log(shelf);
-    console.log(this.state.books[index]);
-
-    this.setState( {
-      books: tempBooks
-    })
+    // if the index is valid, change the state
+    if (index != -1) {
+      tempBooks[index].shelf = shelf;
+      this.setState( {
+        books: tempBooks
+      })
+    }
   }
 
   render() {
