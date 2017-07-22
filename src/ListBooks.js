@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ListAuthors from './ListAuthors'
 import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 
