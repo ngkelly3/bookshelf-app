@@ -41,6 +41,9 @@ class App extends Component {
           <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'wantToRead'} />
           <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'read'} />
         </div>
+        <div className='open-search'>
+          <a>SearchButton</a>
+        </div>
       </div>
     );
   }
