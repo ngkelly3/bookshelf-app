@@ -9,8 +9,7 @@ import './App.css';
 class App extends Component {
 
   state = {
-    books: [],
-    showSearchPage: false
+    books: []
   }
 
   componentDidMount() {
@@ -48,7 +47,7 @@ class App extends Component {
                   <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'read'} />
                 </div>
                 <div className='open-search'>
-                  <Link to="/search">Search Books</Link>
+                  <Link to="/search">Add a Book</Link>
                 </div>
               </div>
             )}
