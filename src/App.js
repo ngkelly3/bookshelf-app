@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import ListBooks from './ListBooks'
 import * as BooksAPI from './BooksAPI'
 import './App.css';
@@ -32,19 +33,24 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="list-books-title">
-          <h1>My Bookshelf</h1>
+        <div className="App">
+          <Route path="/" exact render={() => (
+            <div>
+              <div className="list-books-title">
+                <h1>My Bookshelf</h1>
+              </div>
+              <div className='list-books-content'>
+                <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'currentlyReading'} />
+                <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'wantToRead'} />
+                <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'read'} />
+              </div>
+              <div className='open-search'>
+                <a>SearchButton</a>
+              </div>
+              </div>
+            )}
+          />
         </div>
-        <div className='list-books-content'>
-          <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'currentlyReading'} />
-          <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'wantToRead'} />
-          <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'read'} />
-        </div>
-        <div className='open-search'>
-          <a>SearchButton</a>
-        </div>
-      </div>
     );
   }
 }
