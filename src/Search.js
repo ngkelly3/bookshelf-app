@@ -6,7 +6,9 @@ const Search = () => {
         <div className='search-books'>
           <div className='search-books-bar'>
             <Link to="/" className='close-search'>Back to Main Page</Link>
-            <p>Search Page</p>
+            <div className='search-books-input-wrapper'>
+              <input type="text" name="book" placeholder="Book Name"/>
+            </div>
           </div>
         </div>
     )
