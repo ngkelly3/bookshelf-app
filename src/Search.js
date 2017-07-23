@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import * as BooksAPI from './BooksAPI'
 
 
 class Search extends Component {
@@ -11,9 +12,21 @@ class Search extends Component {
 
   handleChange = (value) => {
     this.setState({
-      query: value
+      query: value.trim()
     })
     //console.log(this.state.query);
+    this.updateSearchedBooks();
+  }
+
+  updateSearchedBooks = () => {
+
+    // minimum search length is 3
+    if (this.state.query.length >= 3) {
+      BooksAPI.search(this.state.query, 10).then((books) => {
+          this.setState({books})
+        })
+    }
+    //console.log(this.state.books);
   }
 
   render() {
