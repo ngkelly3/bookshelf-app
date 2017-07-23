@@ -19,7 +19,6 @@ class App extends Component {
   }
 
   updateBooks = (book, shelf) => {
-
     // store the current state in a temp variable
     let tempBooks = this.state.books;
     let index = tempBooks.findIndex((bookItem) => bookItem.id === book.id );
@@ -27,6 +26,16 @@ class App extends Component {
     // if the index is valid, change the state
     if (index !== -1) {
       tempBooks[index].shelf = shelf;
+      this.setState( {
+        books: tempBooks
+      })
+    } else {
+
+      // if the book isn't found in the current shelf, then add the book to the state manually and change the state
+      // this code should execute only if a book isn't already on the bookshelf
+      console.log("My previous state should be none");
+      book.shelf = shelf;
+      tempBooks.push(book);
       this.setState( {
         books: tempBooks
       })
@@ -53,7 +62,7 @@ class App extends Component {
             )}
           />
           <Route path="/search" render={({ history }) => (
-              <Search />
+              <Search updateBooks={this.updateBooks} />
             )}
           />
         </div>

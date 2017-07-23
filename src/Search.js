@@ -1,32 +1,39 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import ListQuery from './ListQuery'
 import * as BooksAPI from './BooksAPI'
 
 
 class Search extends Component {
 
   state = {
-    books: [],
+    bookResults: [],
     query: ''
   }
 
   handleChange = (value) => {
+    console.log(value);
     this.setState({
-      query: value.trim()
-    })
-    //console.log(this.state.query);
-    this.updateSearchedBooks();
+      query: value
+    });
+    //console.log("Query after callback: ", this.state.query);
+    this.updateSearchedBooks(value);
   }
 
-  updateSearchedBooks = () => {
+  updateSearchedBooks = (query) => {
+    //console.log("Query when updateSearchedBooks is called:", this.state.query)
 
     // minimum search length is 3
-    if (this.state.query.length >= 3) {
-      BooksAPI.search(this.state.query, 10).then((books) => {
-          this.setState({books})
+    if (query.length > 0) {
+      BooksAPI.search(query, 5).then((books) => {
+          console.log(books)
+          books.error ?
+            this.setState( {bookResults:[]} ) : this.setState( {bookResults:books} )
         })
+    } else {
+      this.setState({ bookResults:[] })
     }
-    //console.log(this.state.books);
+
   }
 
   render() {
@@ -44,7 +51,7 @@ class Search extends Component {
             </div>
           </div>
           <div className='search-books-results'>
-            <h1>List Books Component?</h1>
+            <ListQuery books={this.state.bookResults} updateBooks={this.props.updateBooks} />
           </div>
         </div>
     )
