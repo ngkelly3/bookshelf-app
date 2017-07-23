@@ -22,10 +22,9 @@ class Search extends Component {
 
   updateSearchedBooks = (query) => {
     //console.log("Query when updateSearchedBooks is called:", this.state.query)
-
     // minimum search length is 3
     if (query.length > 0) {
-      BooksAPI.search(query, 5).then((books) => {
+      BooksAPI.search(query, 1).then((books) => {
           console.log(books)
           books.error ?
             this.setState( {bookResults:[]} ) : this.setState( {bookResults:books} )

@@ -41,7 +41,8 @@ class ListQuery extends Component {
     // represents the books of the current shelf
     let thisBookShelf = books
 
-    // console.log(thisBookShelf);
+    console.log("We are here")
+    console.log(thisBookShelf);
 
     return(
             <div className='bookshelf-books'>
@@ -52,11 +53,14 @@ class ListQuery extends Component {
                       <li key={book.id}>
                         <div className='book'>
                           <div className='book-top'>
-                            <div className='book-cover' style={{
-                              backgroundImage: `url(${book.imageLinks.thumbnail})`,
-                              width: 128,
-                              height: 192
-                            }}/>
+                          {
+                            (book.imageLinks !== undefined) ?
+                              <div className='book-cover' style={{
+                                backgroundImage: `url(${book.imageLinks.thumbnail})`,
+                                width: 128,
+                                height: 192
+                              }}/> : <div></div>
+                          }
                             <div className='book-shelf-changer'>
                               <select value={book.shelf} onChange={(e) => this.handleShelfChange(e, book)}>
                                 <option value='none' disabled>Move to...</option>
@@ -70,11 +74,14 @@ class ListQuery extends Component {
                           <div className='book-title'>
                             <h5>{book.title}</h5>
                           </div>
-                          <div className='book-authors'>
-                            {book.authors.map((author) => (
-                              <div className='book-authors' key={author.toString()}>{author}</div>
-                            ))}
-                          </div>
+                          {
+                            (book.authors !== undefined) ?
+                            <div className='book-authors'>
+                              {book.authors.map((author) => (
+                                <div className='book-authors' key={author.toString()}>{author}</div>
+                              ))}
+                            </div> : <div></div>
+                          }
                         </div>
                       </li>
                     ))}
