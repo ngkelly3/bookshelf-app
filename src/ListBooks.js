@@ -10,14 +10,14 @@ class ListBooks extends Component {
 
   handleShelfChange = (event, book) => {
     let shelf = event.target.value;
-    // change
+    
+    // update the book's state using BooksAPI
     BooksAPI.update(book, shelf).then(
       this.props.updateBooks(book, shelf)
     );
-    console.log(shelf);
+    // console.log(shelf);
     // console.log(this.state.books);
   }
-
 
   render() {
     // props destructuring

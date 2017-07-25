@@ -33,7 +33,6 @@ class App extends Component {
 
       // if the book isn't found in the current shelf, then add the book to the state manually and change the state
       // this code should execute only if a book isn't already on the bookshelf
-      console.log("My previous state should be none");
       book.shelf = shelf;
       tempBooks.push(book);
       this.setState( {
