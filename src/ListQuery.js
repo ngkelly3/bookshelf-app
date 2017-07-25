@@ -8,17 +8,7 @@ class ListQuery extends Component {
   }
 
   state = {
-    shelf: '',
     bookShelf: []
-  }
-
-  componentDidMount() {
-    if (this.props.shelf === 'currentlyReading')
-      this.setState({shelf: 'Currently Reading'})
-    if (this.props.shelf === 'wantToRead')
-      this.setState({shelf: 'Want To Read'})
-    if (this.props.shelf === 'read')
-      this.setState({shelf: 'Read'})
   }
 
   handleShelfChange = (event, book) => {
@@ -36,13 +26,11 @@ class ListQuery extends Component {
   render() {
     // props destructuring
     const { books } = this.props;
-    const { shelf } = this.state;
+    const { mainBooks } = this.props;
+    console.log(mainBooks);
 
     // represents the books of the current shelf
-    let thisBookShelf = books
-
-    console.log("We are here")
-    console.log(thisBookShelf);
+    let thisBookShelf = books;
 
     return(
             <div className='bookshelf-books'>

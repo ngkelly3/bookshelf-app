@@ -62,7 +62,7 @@ class App extends Component {
             )}
           />
           <Route path="/search" render={({ history }) => (
-              <Search updateBooks={this.updateBooks} />
+              <Search mainBooks={this.state.books} updateBooks={this.updateBooks} />
             )}
           />
         </div>

@@ -23,11 +23,22 @@ class Search extends Component {
   updateSearchedBooks = (query) => {
     //console.log("Query when updateSearchedBooks is called:", this.state.query)
     // minimum search length is 3
+
     if (query.length > 0) {
       BooksAPI.search(query, 1).then((books) => {
-          console.log(books)
-          books.error ?
-            this.setState( {bookResults:[]} ) : this.setState( {bookResults:books} )
+          //console.log(books)
+          if (books.error) {
+            this.setState( {bookResults:[]} )
+          } else {
+            books.map((book) => {
+              this.props.mainBooks.map((mainBook) => {
+                if (book.id === mainBook.id) {
+                  book.shelf = mainBook.shelf;
+                }
+              })
+            })
+            this.setState( {bookResults:books} )
+          }
         })
     } else {
       this.setState({ bookResults:[] })
@@ -50,7 +61,7 @@ class Search extends Component {
             </div>
           </div>
           <div className='search-books-results'>
-            <ListQuery books={this.state.bookResults} updateBooks={this.props.updateBooks} />
+            <ListQuery books={this.state.bookResults} mainBooks={this.props.mainBooks} updateBooks={this.props.updateBooks} />
           </div>
         </div>
     )
