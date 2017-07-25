@@ -5,7 +5,7 @@ import * as BooksAPI from './BooksAPI'
 class ListBooks extends Component {
 
   static propTypes = {
-    books: PropTypes.array.isRequired
+    thisBookShelf: PropTypes.array.isRequired
   }
 
   handleShelfChange = (event, book) => {
@@ -21,10 +21,7 @@ class ListBooks extends Component {
 
   render() {
     // props destructuring
-    const { books } = this.props;
-
-    // represents the books of the current shelf
-    let thisBookShelf = books;
+    const { thisBookShelf } = this.props;
 
     return(
             <div className='bookshelf-books'>

@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 import ListQuery from './ListQuery'
 import * as BooksAPI from './BooksAPI'
 
 
 class Search extends Component {
+
+  static propTypes = {
+    mainBooks: PropTypes.array.isRequired
+  }
 
   state = {
     bookResults: [],
@@ -24,9 +29,9 @@ class Search extends Component {
 
     if (query.length > 0) {
       BooksAPI.search(query, 1).then((books) => {
-          //console.log(books)
+          // check if the return is valid, else the state should be cleared
           if (books.error) {
-            this.setState( {bookResults:[]} )
+            this.setState( { bookResults:[] } )
           } else {
             // cross-references the queried result with current shelf and updates the state of the book
             books.map((book) => {
@@ -36,7 +41,7 @@ class Search extends Component {
                 }
               })
             })
-            this.setState( {bookResults:books} )
+            this.setState( { bookResults:books } )
           }
         })
     } else {
@@ -66,6 +71,5 @@ class Search extends Component {
     )
   }
 }
-
 
 export default Search
