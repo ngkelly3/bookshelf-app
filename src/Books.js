@@ -16,7 +16,6 @@ class ListQuery extends Component {
     );
     console.log(shelf);
     // console.log(this.state.books);
-
   }
 
 
@@ -77,4 +76,4 @@ class ListQuery extends Component {
 
 }
 
-export default ListQuery
+export default Books

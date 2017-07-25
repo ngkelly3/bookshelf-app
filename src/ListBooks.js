@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import * as BooksAPI from './BooksAPI'
 
 class ListBooks extends Component {
+
   static propTypes = {
     books: PropTypes.array.isRequired
   }
