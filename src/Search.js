@@ -21,8 +21,6 @@ class Search extends Component {
   }
 
   updateSearchedBooks = (query) => {
-    //console.log("Query when updateSearchedBooks is called:", this.state.query)
-    // minimum search length is 3
 
     if (query.length > 0) {
       BooksAPI.search(query, 1).then((books) => {
@@ -30,6 +28,7 @@ class Search extends Component {
           if (books.error) {
             this.setState( {bookResults:[]} )
           } else {
+            // cross-references the queried result with current shelf and updates the state of the book
             books.map((book) => {
               this.props.mainBooks.map((mainBook) => {
                 if (book.id === mainBook.id) {

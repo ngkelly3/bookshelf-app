@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-import ListBooks from './ListBooks'
+import ListShelves from './ListShelves'
 import Search from './Search'
 import * as BooksAPI from './BooksAPI'
 import './App.css';
@@ -51,9 +51,9 @@ class App extends Component {
                   <h1>My Bookshelf</h1>
                 </div>
                 <div className='list-books-content'>
-                  <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'currentlyReading'} />
-                  <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'wantToRead'} />
-                  <ListBooks books={this.state.books} updateBooks={this.updateBooks} shelf={'read'} />
+                  <ListShelves books={this.state.books} updateBooks={this.updateBooks} shelf={'currentlyReading'} />
+                  <ListShelves books={this.state.books} updateBooks={this.updateBooks} shelf={'wantToRead'} />
+                  <ListShelves books={this.state.books} updateBooks={this.updateBooks} shelf={'read'} />
                 </div>
                 <div className='open-search'>
                   <Link to="/search">Add a Book</Link>
