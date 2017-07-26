@@ -3,8 +3,8 @@ This is a web application that simulates an online  bookshelf.  It categorizes t
 
 ### Getting started
 
-Clone the repo
-Run the application using "yarn start" or "npm start"
+* Clone the repo
+* Run the application using "yarn start" or "npm start"
 
 ### Notes on search functionality
 
