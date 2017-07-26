@@ -28,8 +28,8 @@ class Search extends Component {
   componentWillReceiveProps() {
     // compares current state of searched books with new shelf changes
     if (this.state.bookResults !== []) {
-      this.state.bookResults.map((book) => {
-        this.props.mainBooks.map((mainBook) => {
+      this.state.bookResults.forEach((book) => {
+        this.props.mainBooks.forEach((mainBook) => {
           if (book.id === mainBook.id)
             book.shelf = mainBook.shelf;
         })
@@ -46,8 +46,8 @@ class Search extends Component {
             this.setState( { bookResults:[] } )
           } else {
             // cross-references the queried result with current shelf and updates the state of the book
-            books.map((book) => {
-              this.props.mainBooks.map((mainBook) => {
+            books.forEach((book) => {
+              this.props.mainBooks.forEach((mainBook) => {
                 if (book.id === mainBook.id) {
                   book.shelf = mainBook.shelf;
                 }
