@@ -25,6 +25,18 @@ class Search extends Component {
     this.updateSearchedBooks(value);
   }
 
+  componentWillReceiveProps() {
+    // compares current state of searched books with new shelf changes
+    if (this.state.bookResults !== []) {
+      this.state.bookResults.map((book) => {
+        this.props.mainBooks.map((mainBook) => {
+          if (book.id === mainBook.id)
+            book.shelf = mainBook.shelf;
+        })
+      })
+    }
+  }
+
   updateSearchedBooks = (query) => {
 
     if (query.length > 0) {
@@ -67,7 +79,11 @@ class Search extends Component {
             </div>
           </div>
           <div className='search-books-results'>
-            <ListQuery books={this.state.bookResults} mainBooks={this.props.mainBooks} updateBooks={this.props.updateBooks} />
+            <ListQuery
+              books={this.state.bookResults}
+              mainBooks={this.props.mainBooks}
+              updateBooks={this.props.updateBooks}
+              updateCurrentQuery={ this.updateCurrentQuery } />
           </div>
         </div>
     )
