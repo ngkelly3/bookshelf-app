@@ -1,11 +1,12 @@
 ## My Bookshelf App
 This is a web application that simulates an online  bookshelf.  It categorizes the books you have into "Currently Reading", "Want to Read" and "Read".  This is a helpful way to keep track of the books that you own.
 
-### Getting started
+### Quickstart
 
-* Clone the repo
+* Clone the GitHub repository
 * Run "npm install" to install dependencies
 * Run the application using "npm start"
+* Navigate to http://localhost:3000 if the application does not start automatically
 
 ### Notes on search functionality
 
