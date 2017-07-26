@@ -4,7 +4,8 @@ This is a web application that simulates an online  bookshelf.  It categorizes t
 ### Getting started
 
 * Clone the repo
-* Run the application using "yarn start" or "npm start"
+* Run "npm install" to install dependencies
+* Run the application using "npm start"
 
 ### Notes on search functionality
 

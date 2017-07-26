@@ -17,11 +17,11 @@ class Search extends Component {
   }
 
   handleChange = (value) => {
-    console.log(value);
+    // console.log(value);
     this.setState({
       query: value
     });
-    //console.log("Query after callback: ", this.state.query);
+    // console.log("Query after callback: ", this.state.query);
     this.updateSearchedBooks(value);
   }
 
@@ -41,7 +41,9 @@ class Search extends Component {
                 }
               })
             })
-            this.setState( { bookResults:books } )
+            // only change the state of the books have changed
+            if (books !== this.state.bookResults)
+              this.setState( { bookResults:books } )
           }
         })
     } else {
