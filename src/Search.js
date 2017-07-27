@@ -47,6 +47,7 @@ class Search extends Component {
           } else {
             // cross-references the queried result with current shelf and updates the state of the book
             books.forEach((book) => {
+              book.shelf = 'none';
               this.props.mainBooks.forEach((mainBook) => {
                 if (book.id === mainBook.id) {
                   book.shelf = mainBook.shelf;
